@@ -15,6 +15,11 @@
 #       JIRA_PASSWORD
 #       BUILD_NUMBER
 #
+#
+## USAGE INSTRUCTIONS:
+# Run this script as a post-build step. The get_jiras.py script needs to be in the same
+# directory as this script.
+#   ./update_jira.sh 
 ###########
 
 JIRA_URL="https://jira.yourcompanydomain.com"
@@ -35,7 +40,7 @@ curl \
     ${BUILD_URL}
 
 # parse build_json.txt
-JIRAS=`fastlane/scripts_and_templates/get_jiras.py`
+JIRAS=`get_jiras.py`
 
 for jira in $JIRAS; do
     echo "Setting JIRA ${jira} build fixed to ${BUILD_NUMBER}"
